@@ -193,7 +193,6 @@ class Category{
         // bind variable values
         $search_term = "%{$search_term}%";
         $stmt->bindParam(1, $search_term);
-        
       
         $stmt->execute();
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -225,6 +224,19 @@ class Category{
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
           
         $this->name = $row['name'];
+    }
+    public function searchPlayer($searchText, $start = 0, $limit = 10)
+    {
+        $sql = "SELECT * FROM {$this->table_name} p WHERE p.name LIKE :search ORDER BY id DESC LIMIT {$start},{$limit}";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([':search' => "{$searchText}%"]);
+        if ($stmt->rowCount() > 0) {
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } else {
+            $results = [];
+        }
+
+        return $results;
     }
   
    

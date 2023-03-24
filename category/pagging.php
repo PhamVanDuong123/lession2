@@ -1,5 +1,6 @@
 <?php
-echo "<ul class=\"pagination\">";
+
+echo "<ul class=\"pagination justify-content-center\">";
   
 // button for first page
 if($page>1){

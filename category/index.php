@@ -27,9 +27,11 @@ $num = $stmt->rowCount();
 // specify the page where paging is used
 
 include_once "layout_header.php";
-
+include_once "search.php";
 include_once "read_template.php";
+
 include_once "form.php";
+
 include_once 'objects/sub_category.php';
 
 
@@ -42,6 +44,5 @@ $total_rows = $category->countAll();
 
 $page_url = "index.php?";
 include_once 'pagging.php';
-
 // layout_footer.php holds our javascript and closing html tags
 include_once "layout_footer.php";

@@ -11,7 +11,7 @@
 
     <!-- Latest compiled and minified Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-
+  
     <!-- our custom CSS -->
     <link rel="stylesheet" href="css/custom.css" />
 
@@ -28,13 +28,4 @@
            
         </ul>
        
-        <!-- <div class="form-group">
-
-
-            <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <div class="position-left">
-                    <span>Search for 15 result</span>
-                </div> -->
+      

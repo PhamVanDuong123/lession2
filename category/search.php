@@ -1,36 +1,49 @@
-<?php
-// core.php holds pagination variables
-include_once 'config/core.php';
-  
-// include database and object files
-include_once 'config/database.php';
-include_once 'objects/category.php';
-  
-// instantiate database and product object
-$database = new Database();
-$db = $database->getConnection();
-  
 
-$category = new Category($db);
-  
-// get search term
-$search_term=isset($_GET['s']) ? $_GET['s'] : '';
-  
-$page_title = "You searched for \"{$search_term}\"";
+<?php 
+include_once  'config/database.php';
+include_once 'objects/category.php';
 include_once "layout_header.php";
-  
-// query products
-$stmt = $category->search($search_term, $from_record_num, $records_per_page);
-  
-// specify the page where paging is used
-$page_url="search.php?s={$search_term}&";
-  
-// count total rows - used for pagination
-$total_rows=$category->countAll_BySearch($search_term);
-  
-// read_template.php controls how the cate$category list will be rendered
-include_once "read_template.php";
-  
-// layout_footer.php holds our javascript and closing html tags
-include_once "layout_footer.php";
 ?>
+<div class="container mt-5" style="max-width: 555px; margin-top:50px" >
+ 
+        </div>
+        <form action="search.php">
+        <input  type="text" class="form-control"  name="live_search" id="live_search" autocomplete="off"
+            placeholder="Search ...">
+            <a href="search.php"></a>
+        </form>
+      
+        <div id="search_result"></div>
+  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+    <script type="text/javascript">  //search ajax
+        $(document).ready(function () {
+            $("#live_search").keyup(function () {
+                var query = $(this).val();
+                if (query != "") {
+                    $.ajax({
+                        url: 'ajax_live_search.php',
+                        method: 'POST',
+                        data: {
+                            query: query
+                        },
+                        success: function (data) {
+                            $('#search_result').html(data);
+                            $('#search_result').css('display', 'block');
+                            $("#live_search").focusout(function () {
+                                $('#search_result').css('display', 'none');
+                            });
+                            $("#live_search").focusin(function () {
+                                $('#search_result').css('display', 'block');
+                            });
+                        }
+                    });
+                } else {
+                    $('#search_result').css('display', 'none');
+                }
+            });
+        });
+    </script>
+ 
+    

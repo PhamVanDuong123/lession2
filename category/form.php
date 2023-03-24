@@ -1,8 +1,11 @@
+
+<!-- profile modal start -->
+
 <?php
 
 if ($num > 0) {
 
-    echo "<table class='table table-hover table-responsive table-bordered' style='margin-top:50px'>";
+    echo "<table class='table table-hover  table-bordered' style='margin-top:100px'>";
     echo "<tr style='with:100%' >";
     echo "<th>#</th>";
     echo "<th style='text-align:center' >Category</th>";
@@ -18,7 +21,7 @@ if ($num > 0) {
          echo"<td style='text-align:center'>{$name}</td>";
 
         echo "<td>";
-        echo "<a href='read_one.php?id={$id}' class='btn btn-primary left-margin'>
+        echo "<a href='detail.php?id={$id}' class='btn btn-primary left-margin' >
         <span class='glyphicon glyphicon-copy'></span> 
             </a>
               
@@ -43,3 +46,6 @@ if ($num > 0) {
 else {
     echo "<div class='alert alert-info'>No categorys found.</div>";
 }
+
+?>
+

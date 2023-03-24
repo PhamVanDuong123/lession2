@@ -4,6 +4,7 @@
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
+
 <!-- Latest compiled and minified Bootstrap JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
    
@@ -43,6 +44,37 @@ $(document).on('click', '.delete-object', function(){
   
     return false;
 });
+$(document).on("click", "a.profile", function () {
+    var pid = $(this).data("id");
+    $.ajax({
+      url: "/phpcrudajax/ajax.php",
+      type: "GET",
+      dataType: "json",
+      data: { id: pid, action: "getuser" },
+      success: function (player) {
+        if (player) {
+          const userphoto = player.photo ? player.photo : "default.png";
+          const profile = `<div class="row">
+                <div class="col-sm-6 col-md-4">
+                  <img src="uploads/${userphoto}" class="rounded responsive" />
+                </div>
+                <div class="col-sm-6 col-md-8">
+                  <h4 class="text-primary">${player.pname}</h4>
+                  <p class="text-secondary">
+                    <i class="fa fa-envelope-o" aria-hidden="true"></i> ${player.email}
+                    <br />
+                    <i class="fa fa-phone" aria-hidden="true"></i> ${player.phone}
+                  </p>
+                </div>
+              </div>`;
+          $("#profile").html(profile);
+        }
+      },
+      error: function () {
+        console.log("something went wrong");
+      },
+    });
+  });
 </script> 
 </body>
 </html>

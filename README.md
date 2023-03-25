@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS `categories` (
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -insert values
-
+```sh
 INSERT INTO `categories` (`id`, `name`, `parent_id`) VALUES
 (1, 'PHP', 0),
 (2, 'JAVASCRIPT', 0),
@@ -34,10 +34,10 @@ INSERT INTO `categories` (`id`, `name`, `parent_id`) VALUES
 (13, 'sdddd', 2),
 (14, 'Duong', 2),
 (15, 'Duong', 8);
-
+```
 ### Run the Project
 
 Run the localhost (Apache service)
 point to the:
-
+```sh
 http://localhost/projectname

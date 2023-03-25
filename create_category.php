@@ -1,7 +1,7 @@
 <?php
 include_once 'config/database.php';
 
-include_once 'objects/category.php';
+include_once 'model/category.php';
 
 // get database connection
 $database = new Database();
@@ -12,11 +12,10 @@ $db = $database->getConnection();
 $category = new Category($db);
 
 // set page headers
-$page_title = "Create category";
-include_once "layout_header.php";
+$page_title = "Add new category category";
+include_once "view/layout_header.php";
 
-
-// contents will be here
+// button back index.php
 echo "<div class='right-button-margin' style='margin-top:20px'>
         <a href='index.php' class='btn btn-default pull-right'>Read category</a>
     </div>";
@@ -26,13 +25,13 @@ echo "<div class='right-button-margin' style='margin-top:20px'>
 // if the form was submitted - PHP OOP CRUD Tutorial
 if($_POST){
   
-    // set cate$category property values
+    // set category property values
     $category->name = $_POST['name'];
    
     
     $category->parent_id = $_POST['parent_id'];
   
-    // create the cate$category
+    // create the category
     if($category->create()){
         echo "<div class='alert alert-success'>category was created.</div>";
     }
@@ -48,25 +47,15 @@ if($_POST){
     <table class='table table-hover table-responsive table-bordered'>
 
         <tr>
-            <td>Name</td>
+            <td> Category name</td>
             <td><input type='text' name='name' class='form-control' /></td>
         </tr>
 
-        <!-- <tr>
-            <td>Price</td>
-            <td><input type='text' name='price' class='form-control' /></td>
-        </tr>
-
         <tr>
-            <td>Description</td>
-            <td><textarea name='description' class='form-control'></textarea></td>
-        </tr> -->
-
-        <tr>
-            <td>Subcategory</td>
+            <td>Parent category</td>
             <td>
                 <?php
-                // read the cate$category categories from the database
+                // read the category categories from the database
                  $stmt = $category->read();
 
                 // put them in a select drop-down
@@ -75,7 +64,7 @@ if($_POST){
 
                 while ($row_category = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     extract($row_category);
-                    echo "<option value='{$id}'>{$id}</option>";
+                    echo "<option value='{$id}'>{$name}</option>";
                 }
 
                 echo "</select>";
@@ -86,7 +75,7 @@ if($_POST){
         <tr>
             <td></td>
             <td>
-                <button type="submit" class="btn btn-primary">Create</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
             </td>
         </tr>
 
@@ -95,5 +84,5 @@ if($_POST){
 <?php
 
 // footer
-include_once "layout_footer.php";
+include_once "view/layout_footer.php";
 ?>

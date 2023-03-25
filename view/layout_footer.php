@@ -1,21 +1,17 @@
 </div>
-    <!-- /container -->
-  
+<!-- /container -->
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-
-
 <!-- Latest compiled and minified Bootstrap JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-   
 <!-- bootbox library -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
 <script>
 // JavaScript for deleting product
-$(document).on('click', '.delete-object', function(){
-  
+$(document).on('click', '.delete-object', function() {
+
     var id = $(this).attr('delete-id');
-  
+
     bootbox.confirm({
         message: "<h4>Are you sure?</h4>",
         buttons: {
@@ -28,12 +24,12 @@ $(document).on('click', '.delete-object', function(){
                 className: 'btn-primary'
             }
         },
-        callback: function (result) {
-  
-            if(result==true){
+        callback: function(result) {
+
+            if (result == true) {
                 $.post('delete_category.php', {
                     object_id: id
-                }, function(data){
+                }, function(data) {
                     location.reload();
                 }).fail(function() {
                     alert('Unable to delete.');
@@ -41,20 +37,23 @@ $(document).on('click', '.delete-object', function(){
             }
         }
     });
-  
+
     return false;
 });
-$(document).on("click", "a.profile", function () {
+$(document).on("click", "a.profile", function() {
     var pid = $(this).data("id");
     $.ajax({
-      url: "/phpcrudajax/ajax.php",
-      type: "GET",
-      dataType: "json",
-      data: { id: pid, action: "getuser" },
-      success: function (player) {
-        if (player) {
-          const userphoto = player.photo ? player.photo : "default.png";
-          const profile = `<div class="row">
+        url: "/phpcrudajax/ajax.php",
+        type: "GET",
+        dataType: "json",
+        data: {
+            id: pid,
+            action: "getuser"
+        },
+        success: function(player) {
+            if (player) {
+                const userphoto = player.photo ? player.photo : "default.png";
+                const profile = `<div class="row">
                 <div class="col-sm-6 col-md-4">
                   <img src="uploads/${userphoto}" class="rounded responsive" />
                 </div>
@@ -67,14 +66,15 @@ $(document).on("click", "a.profile", function () {
                   </p>
                 </div>
               </div>`;
-          $("#profile").html(profile);
-        }
-      },
-      error: function () {
-        console.log("something went wrong");
-      },
+                $("#profile").html(profile);
+            }
+        },
+        error: function() {
+            console.log("something went wrong");
+        },
     });
-  });
-</script> 
+});
+</script>
 </body>
+
 </html>

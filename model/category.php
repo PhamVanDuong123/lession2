@@ -8,12 +8,9 @@ class Category{
     // object properties
     public $id;
     public $name;
-  
-
     public $parent_id;
     public $timestamp;
   
- 
     public function __construct($db)
     {
         $this->conn = $db;
@@ -35,7 +32,7 @@ class Category{
         return $stmt;
     }
 
-    // create product
+    // create category
     function create()
     {
 

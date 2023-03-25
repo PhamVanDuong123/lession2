@@ -30,7 +30,7 @@ if ($num > 0) {
             </a>
               
             <a delete-id='{$id}' class='btn btn-danger delete-object'>
-                <span class='glyphicon glyphicon-remove'></span> 
+                <span class='glyphicon glyphicon-trash'></span> 
             </a>";
         echo "</td>";
 

@@ -5,7 +5,7 @@ $id = isset($_GET['id']) ? $_GET['id'] : die('ERROR: missing ID.');
 // include database and object files
 include_once 'config/database.php';
 
-include_once 'objects/category.php';
+include_once 'model/category.php';
   
 // get database connection
 $database = new Database();
@@ -14,13 +14,13 @@ $db = $database->getConnection();
 // prepare objects
 $category = new Category($db);
   
-// set ID property of product to be read
+// set ID property of category to be read
 $category->id = $id;
   
-// read the details of product to be read
+// read the details of category to be read
 $category->readOne();
 $page_title = "View detail";
-include_once "layout_header.php";
+include_once "view/layout_header.php";
 
 echo "<table class='table table-hover table-responsive table-bordered' style='margin-top: 10px'>";
   
@@ -48,5 +48,5 @@ echo "<div class='right-button-margin'>";
 echo "</div>";
   
 // set footer
-include_once "layout_footer.php";
+include_once "view/layout_footer.php";
 ?>

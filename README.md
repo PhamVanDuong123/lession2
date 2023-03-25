@@ -10,16 +10,17 @@ Set up project
 - create database name "demo"
 - create table using given below sql statement
 
-
+```sh
 CREATE TABLE IF NOT EXISTS `categories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `parent_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+```
+- Insert values
 
--insert values
-
+```sh
 INSERT INTO `categories` (`id`, `name`, `parent_id`) VALUES
 (1, 'PHP', 0),
 (2, 'JAVASCRIPT', 0),
@@ -34,10 +35,10 @@ INSERT INTO `categories` (`id`, `name`, `parent_id`) VALUES
 (13, 'sdddd', 2),
 (14, 'Duong', 2),
 (15, 'Duong', 8);
-
+```
 ### Run the Project
 
 Run the localhost (Apache service)
 point to the:
-
+```sh
 http://localhost/projectname

@@ -8,7 +8,7 @@ Set up project
   Create Database:
 
 - create database name "demo"
-- create table using given below sql statement
+- create table using given below sql statement or file sql in config/demo.sql
 
 ```sh
 CREATE TABLE IF NOT EXISTS `categories` (
